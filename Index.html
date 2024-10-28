@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Connect</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha384-DyZv3H3tuD5WV4h/nk5gQ7lTpOXjO93g2c9DTrFhsybU+wxBQflC9Q4+0HtT/mwD" crossorigin="anonymous">
+
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+
+        html{
+            scroll-behavior: smooth;
+        }
+        /* Reset and Basic Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #000;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('3.jpg'); /* White gradient with image */
+    background-size: cover;
+    background-position: center;
+    color: black;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Logo */
+.navbar .logo-container img {
+    height: 70px;
+    width: 70px;
+}
+
+/* Navbar Links */
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+}
+
+.navbar ul li {
+    position: relative;
+}
+
+.navbar ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 0.95em;
+    padding: 0.5em 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: inherit;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* Dropdown Styles */
+.navbar ul .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    z-index: 999;
+}
+
+.navbar ul .dropdown a {
+    color: black;
+    padding: 1em;
+    display: block;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.navbar ul li:hover .dropdown {
+    display: block;
+}
+
+/* Auth Buttons */
+.navbar .auth-buttons a {
+    margin-left: 1em;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: black;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.95em;
+    font-weight: 600;
+}
+
+.navbar .auth-buttons a:hover {
+    background-color: black;
+}
+
+/* Mobile Navbar Toggle Button */
+.navbar .menu-toggle {
+    display: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 998;
+    }
+
+    .navbar ul li {
+        padding: 0.5em 1.5em;
+    }
+
+    .navbar ul .dropdown {
+        position: static;
+        background-color: #fff;
+        border: none;
+        box-shadow: none;
+    }
+
+    .navbar ul li a {
+        font-size: 1em;
+        padding: 0.8em 0;
+    }
+
+    .navbar .menu-toggle {
+        display: block;
+    }
+
+    /* Show navbar links when toggled */
+    .navbar ul.show {
+        display: flex;
+    }
+}
+
+       /* Main Section Styling */
+.home-section {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('law-background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 6em;
+}
+
+/* Content Styling */
+.home-section .content {
+    position: relative;
+    z-index: 1;
+    max-width: 80%;
+    padding-top: 1em;
+}
+
+.home-section h1 {
+    font-size: 3em; /* Responsive font size */
+    margin-bottom: 0.5em;
+    font-weight: 700;
+    font-family: 'Merriweather', serif;
+}
+
+@media (max-width: 768px) {
+    .home-section h1 {
+        font-size: 2em; /* Smaller font size on mobile */
+    }
+}
+
+/* Line Below Heading */
+.line {
+    width: 60%;
+    height: 4px;
+    background-color: #ffffff;
+    margin: 1em auto;
+}
+
+/* Law Rules Section */
+.law-rules {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.law-rule {
+    padding: 0 0.5em;
+    font-size: 1.8em;
+    text-align: center;
+    font-family: 'Merriweather', serif;
+}
+
+@media (max-width: 768px) {
+    .law-rule {
+        font-size: 1.4em; /* Smaller font size for mobile */
+    }
+}
+
+/* Paragraph Styling */
+.home-section p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 1.5em auto;
+    padding: 0 1em;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .home-section p {
+        font-size: 1em; /* Smaller font size for mobile */
+        padding: 0 0.5em; /* Reduce padding for smaller screens */
+    }
+}
+
+/* Button Styling */
+.home-section .cta-button {
+    margin-top: 5%;
+    padding: 0.8em 2em; /* Adjust padding for mobile */
+    font-size: 1.2em; /* Slightly smaller font for mobile */
+    color: #ffffff;
+    background-color: #000000;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.home-section .cta-button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Overlay */
+.home-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .home-section {
+        padding-top: 4em; /* Adjust top padding */
+    }
+
+    .home-section .content {
+        max-width: 90%; /* Increase content width on mobile */
+    }
+
+    .line {
+        width: 50%; /* Adjust line width for mobile */
+    }
+
+    .cta-button {
+        width: 80%; /* Full-width button on mobile */
+        font-size: 1em;
+        padding: 0.8em 1.5em;
+    }
+}
+
+      /* Why Choose Us Section */
+.why-choose-us {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 4em 2em;
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Image Styling */
+.image-container img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+}
+
+.text-container {
+    flex: 1;
+}
+
+.text-container h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    font-family: 'Merriweather', serif;
+    text-align: center; /* Center-align content */
+}
+
+.text-container h3 {
+    font-size: 1.3em;
+    font-weight: 400;
+    margin-bottom: 1em;
+    color: #cccccc;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center; /* Center-align content */
+}
+
+.text-container p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 1.5em;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center; /* Center-align content */
+}
+
+/* Key Points List */
+.text-container ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.1em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.text-container ul li {
+    margin-bottom: 0.5em;
+    padding-left: 1.2em;
+    position: relative;
+}
+
+.text-container ul li::before {
+    content: "\2022";
+    color: #FF5722;
+    position: absolute;
+    left: 0;
+    font-size: 1.5em;
+    line-height: 1;
+}
+
+.line1 {
+    width: 80px;
+    height: 3px;
+    background-color: #fff;
+    margin: 1.5em 0;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.line1::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column; /* Stack content vertically */
+        text-align: center; /* Center-align for mobile */
+    }
+
+    .text-container h2 {
+        font-size: 2em; /* Adjusted font size for mobile */
+    }
+
+    .text-container h3 {
+        font-size: 1.1em; /* Adjusted font size for mobile */
+    }
+
+    .text-container p,
+    .text-container ul {
+        font-size: 1em; /* Slightly smaller font for mobile */
+    }
+
+    .image-container img {
+        max-width: 100%; /* Full width image on mobile */
+        margin-bottom: 2em; /* Space below image */
+    }
+
+
+}
+
+
+/* About Us Section */
+.about-us {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('5.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 5em 2em;
+    color: #ffffff;
+    text-align: center; /* Center text on smaller screens */
+}
+
+.about-content {
+    max-width: 800px;
+    text-align: left;
+}
+
+.about-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    font-family: 'Merriweather', serif;
+    text-align: center; /* Center-align content */
+}
+
+.about-content p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin: 1em 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Divider Line */
+.line1 {
+    width: 80px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 1.5em auto;
+    border-radius: 2px;
+}
+
+/* Call-to-Action Button */
+.cta-button {
+    display: inline-block;
+    margin-top: 1.5em;
+    padding: 0.8em 2em;
+    font-size: 1em;
+    color: black;
+    background-color: #ffffff;
+    border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cta-button:hover {
+    background-color: black;
+    color: #ffffff;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .about-us {
+        padding: 3em 1em; /* Reduced padding on smaller screens */
+        text-align: center; /* Center-align content */
+    }
+
+    .about-content {
+        max-width: 100%; /* Full width content on mobile */
+    }
+
+    .about-content h2 {
+        font-size: 2em; /* Smaller font size for heading */
+    }
+
+    .about-content p {
+        font-size: 1em; /* Smaller font size for text */
+    }
+
+    .line1 {
+        width: 60px; /* Smaller divider line on mobile */
+    }
+
+    .cta-button {
+        font-size: 0.9em; /* Slightly smaller button font */
+        padding: 0.7em 1.5em; /* Adjusted button padding */
+    }
+}
+
+
+/* Services Section */
+.services {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('services-background.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 5em 2em;
+    color: #ffffff;
+    text-align: center;
+}
+
+.services-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-icon {
+    width: 60px;
+    margin-bottom: 1em;
+    filter: brightness(0) invert(1);
+}
+
+.services-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    font-family: 'Merriweather', serif;
+}
+
+.line2 {
+    width: 80px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 1em auto;
+    border-radius: 2px;
+}
+
+/* Service Items Grid */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+    margin: 3em 0;
+}
+
+.service-item {
+    border-radius: 10px;
+    padding: 2em;
+    transition: transform 0.3s;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+}
+
+.service-icon {
+    width: 60px;
+    margin-bottom: 1em;
+}
+
+.service-item h3 {
+    font-size: 1.3em;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cta-button {
+    margin-top: 2em;
+    padding: 0.8em 2em;
+    font-size: 1em;
+    color: black;
+    background-color: #ffffff;
+    border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background-color: black;
+    color: #ffffff;
+}
+
+/* Services Summary */
+.services-summary {
+    font-size: 1.2em;
+    color: #ffffff;
+    max-width: 800px;
+    margin: 1.5em auto;
+    line-height: 1.6;
+    opacity: 0.85;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Responsive Styling */
+@media (max-width: 992px) {
+    .services-content h2 {
+        font-size: 2em; /* Smaller heading for medium screens */
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+    }
+
+    .service-item {
+        padding: 1.5em; /* Reduced padding for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .services {
+        padding: 3em 1em; /* Reduced padding for mobile screens */
+    }
+
+    .services-content h2 {
+        font-size: 1.8em;
+    }
+
+    .services-summary {
+        font-size: 1em;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Single column layout for mobile */
+    }
+
+    .cta-button {
+        padding: 0.7em 1.5em; /* Smaller padding for mobile */
+    }
+
+    .line2 {
+        width: 60px; /* Adjust line width for mobile */
+    }
+}
+
+
+.consultations-section {
+    display: flex; /* Flex layout for side-by-side content */
+    align-items: center; /* Center vertically */
+    justify-content: space-between; /* Space out content */
+    padding: 4em 2em; /* Space around the section */
+    background: black;
+    background-size: cover; /* Cover the background */
+    color: #ffffff; /* Text color */
+}
+
+.consultation-content {
+    max-width: 600px; /* Limit content width */
+    margin-right: 2em; /* Space between text and image */
+}
+
+.consultations-section h2 {
+    font-size: 2.5em; /* Adjusted font size */
+    margin-bottom: 0.5em; /* Space below header */
+    font-weight: bold; /* Bold text */
+    letter-spacing: 1px; /* Add some spacing between letters */
+    font-family: 'Merriweather', serif;
+}
+
+.consultations-section p {
+    font-size: 1.2em; /* Adjusted font size */
+    margin: 1em 0; /* Margin around paragraph */
+    line-height: 1.6; /* Improved line height for readability */
+    font-family: 'Montserrat', sans-serif; /* Modern font */
+}
+
+.line3 {
+    width: 60%; /* Width of the line */
+    height: 4px; /* Height of the line */
+    background-color: #ffffff; /* Line color */
+    margin: 1em 0; /* Margin for spacing */
+}
+
+.consultation-image {
+    flex: 1; /* Allow image to take remaining space */
+    text-align: right; /* Align image to the right */
+}
+
+.consultation-image img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners for image */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.consultations-section .cta-button {
+    margin-top: 1.5em; /* Space above the button */
+    padding: 0.8em 2em; /* Padding for button */
+    font-size: 1em; /* Font size for button */
+    color: #333; /* Text color */
+    background-color: #ffffff; /* Button background color */
+    text-decoration: none; /* No underline for button text */
+    border-radius: 50px; /* Rounded button */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    font-weight: 600; /* Bolder font for buttons */
+    font-family: 'Montserrat', sans-serif; /* Modern font */
+}
+
+.consultations-section .cta-button:hover {
+    background-color: #333; /* Dark background on hover */
+    color: #ffffff; /* White text on hover */
+}
+
+.legal-section {
+    display: flex; /* Side-by-side layout */
+    align-items: center; /* Vertical centering */
+    justify-content: space-between; /* Evenly space elements */
+    padding: 4em 2em; /* Padding around the section */
+    gap: 2em; /* Space between image and text */
+    background: black;
+    background-size: cover; /* Cover background */
+    color: #ffffff; /* Text color */
+}
+
+.legal-content {
+    max-width: 600px; /* Limit content width */
+    margin-right: 2em; /* Margin between text and image */
+}
+
+.legal-section h2 {
+    font-size: 2.5em; /* Title font size */
+    margin-bottom: 0.5em; /* Space below header */
+    font-weight: bold; /* Bold title */
+    letter-spacing: 1px; /* Letter spacing */
+    font-family: 'Merriweather', serif;
+}
+
+.legal-section p {
+    font-size: 1.2em; /* Paragraph font size */
+    margin: 1em 0; /* Margin around paragraph */
+    line-height: 1.6; /* Improved readability */
+    font-family: 'Montserrat', sans-serif; /* Modern font */
+}
+
+.line3 {
+    width: 60%; /* Line width */
+    height: 4px; /* Line height */
+    background-color: #ffffff; /* Line color */
+    margin: 1em 0 1.5em; /* Space above and below the line */
+}
+
+.legal-image {
+    flex: 1; /* Allow image to expand */
+    text-align: right; /* Align image right */
+    margin-left: 2em; /* Space between image and text */
+}
+
+.legal-image img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Image shadow */
+}
+
+.legal-section .cta-button {
+    margin-top: 1.5em; /* Space above button */
+    padding: 0.8em 2em; /* Button padding */
+    font-size: 1em; /* Button font size */
+    color: #333; /* Button text color */
+    background-color: #ffffff; /* Button background */
+    text-decoration: none; /* No underline */
+    border-radius: 50px; /* Rounded button */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    font-weight: 600; /* Bold font */
+    font-family: 'Montserrat', sans-serif; /* Modern font */
+}
+
+.legal-section .cta-button:hover {
+    background-color: #333; /* Darken on hover */
+    color: #ffffff; /* White text on hover */
+}
+
+.case-management-section {
+    display: flex; /* Side-by-side layout */
+    align-items: center; /* Center vertically */
+    justify-content: space-between; /* Space out content */
+    padding: 4em 2em; /* Padding around the section */
+    gap: 2em; /* Space between text and image */
+    background: black;
+    color: #ffffff; /* Text color */
+}
+
+.case-content {
+    flex: 1; /* Allow text to expand */
+    max-width: 600px; /* Limit content width */
+    margin-right: 2em; /* Space between text and image */
+}
+
+.case-management-section h2 {
+    font-size: 2.5em; /* Title font size */
+    margin-bottom: 0.5em; /* Space below header */
+    font-weight: bold; /* Bold title */
+    letter-spacing: 1px; /* Letter spacing */
+    font-family: 'Merriweather', serif;
+}
+
+.case-management-section p {
+    font-size: 1.2em; /* Paragraph font size */
+    margin: 1em 0; /* Margin around paragraph */
+    line-height: 1.6; /* Improved readability */
+    font-family: 'Montserrat', sans-serif; /* Modern font */
+}
+
+.line4 {
+    width: 60%; /* Line width */
+    height: 4px; /* Line height */
+    background-color: #ffffff; /* Line color */
+    margin: 1em 0 1.5em; /* Space around the line */
+}
+
+.case-image {
+    flex: 1; /* Allow image to expand */
+    text-align: right; /* Align image to the right */
+}
+
+.case-image img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.case-management-section .cta-button {
+    margin-top: 1.5em; /* Space above button */
+    padding: 0.8em 2em; /* Button padding */
+    font-size: 1em; /* Button font size */
+    color: #333; /* Button text color */
+    background-color: #ffffff; /* Button background */
+    text-decoration: none; /* No underline */
+    border-radius: 50px; /* Rounded button */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    font-weight: 600; /* Bold font */
+    font-family: 'Montserrat', sans-serif; /* Modern font */
+}
+
+.case-management-section .cta-button:hover {
+    background-color: #333; /* Darken on hover */
+    color: #ffffff; /* White text on hover */
+}
+
+/* Loading Screen Styles */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000; /* Black background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000; /* Ensure it overlays all other elements */
+}
+
+.loading-dots {
+    display: flex;
+    gap: 0.5em;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff; /* White dots */
+    border-radius: 50%;
+    animation: loadingBounce 0.6s infinite alternate;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes loadingBounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+/* Hide Main Content Until Page Load */
+body.loaded #loading-screen {
+    display: none;
+}
+
+body:not(.loaded) main {
+    display: none;
+}
+
+.contact-section {
+    display: flex; /* Flex layout for side-by-side content */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center content horizontally */
+    padding: 4em 2em; /* Space around the section */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5)), url('2.jpg'); /* Adjusted gradient */
+    background-size: cover; /* Cover the background */
+    background-position: center; /* Center the image */
+    color: #ffffff; /* Text color */
+
+    opacity: 0; /* Start hidden */
+    transform: translateY(50px); /* Start slightly below */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+}
+
+.contact-section.visible {
+    opacity: 1; /* Make it visible */
+    transform: translateY(0); /* Move to original position */
+}
+
+
+.contact-content {
+    max-width: 600px; /* Limit content width */
+    text-align: left; /* Align text to the left */
+}
+
+.contact-section h2 {
+    font-size: 2.5em; /* Header font size */
+    margin-bottom: 0.5em; /* Space below header */
+    font-weight: bold; /* Bold text */
+    letter-spacing: 1px; /* Spacing between letters */
+    font-family: 'Merriweather', serif; /* Font family */
+}
+
+.contact-section p {
+    font-size: 1.2em; /* Paragraph font size */
+    margin: 1em 0; /* Margin around paragraph */
+    line-height: 1.6; /* Line height for readability */
+    font-family: 'Montserrat', sans-serif; /* Modern font */
+}
+
+.line5 {
+    width: 60%; /* Width of the line */
+    height: 4px; /* Height of the line */
+    background-color: #ffffff; /* Line color */
+    margin: 1em 0; /* Margin for spacing */
+}
+
+.contact-form {
+    display: flex; /* Flex layout for form elements */
+    flex-direction: column; /* Stack elements vertically */
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 1em; /* Padding for input fields */
+    margin: 0.5em 0; /* Margin for spacing */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for inputs */
+    color: #333; /* Text color */
+    font-size: 1em; /* Font size */
+}
+
+.contact-form button {
+    padding: 1em; /* Padding for button */
+    font-size: 1em; /* Font size */
+    color: #ffffff; /* Text color */
+    background-color: black; /* Button background color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.contact-form button:hover {
+    background-color: #555; /* Darken button on hover */
+}
+
+.contact-form select {
+    padding: 1em; /* Padding for dropdown */
+    margin: 0.5em 0; /* Margin for spacing */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for dropdown */
+    color: #333; /* Text color */
+    font-size: 1em; /* Font size */
+    appearance: none; /* Remove default dropdown styling */
+    background-image: url('data:image/png;base64, ...'); /* Optionally add a custom arrow image */
+    background-repeat: no-repeat; /* Prevent repeat */
+    background-position: right 10px center; /* Position the arrow */
+    background-size: 12px; /* Size of the arrow */
+}
+
+.logo-container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    width: 100%; /* Ensure it spans the full width */
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+    box-sizing: border-box; /* Include padding and border in the element’s total width and height */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+
+
+.map-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    min-height: 100vh; /* Ensures section takes full viewport height */
+    margin: 0;
+    padding: 0;
+}
+
+.map-title {
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: #333;
+    text-align: center;
+}
+
+.map-container {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+.footer-section {
+    background-color: #000;
+    color: #fff;
+    padding: 2em 1.5em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2em;
+    max-width: 1200px; /* Centralize content */
+    margin: 0 auto;
+}
+
+.footer-logo img {
+    width: 120px; /* Slightly reduced for a balanced look */
+}
+
+.footer-links, .footer-about, .footer-social {
+    flex: 1 1 250px;
+    min-width: 200px; /* Set minimum width for small screens */
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 0.5em;
+}
+
+.footer-links ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #bbb; /* Soft hover effect */
+}
+
+.footer-about h4, .footer-links h4, .footer-social h4 {
+    margin-bottom: 1em;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: 'Merriweather', serif;
+}
+
+.footer-about p, .footer-about p i, .footer-social a i {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.5em;
+    color: #ccc;
+}
+
+.footer-social a {
+    color: #ccc;
+    font-size: 1.5em;
+    margin-right: 0.8em;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5em;
+    font-size: 0.9em;
+    color: #aaa;
+    border-top: 1px solid #333;
+}
+
+.white-logo {
+    filter: brightness(0) invert(1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-logo img {
+        width: 100px; /* Reduced for smaller screens */
+        margin-bottom: 1em;
+    }
+
+    .footer-about, .footer-links, .footer-social {
+        flex: 1 1 100%;
+    }
+
+    .footer-about h4, .footer-links h4, .footer-social h4 {
+        font-size: 1.1em; /* Slightly smaller for mobile readability */
+    }
+
+    .footer-social a {
+        font-size: 1.2em; /* Reduce icon size on small screens */
+        margin-right: 0.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-section {
+        padding: 1.5em 1em;
+    }
+
+    .footer-links ul li {
+        margin-bottom: 0.3em; /* Reduced spacing for compact layout */
+    }
+
+    .footer-bottom {
+        padding-top: 1em;
+        font-size: 0.8em;
+    }
+}
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+<div id="loading-screen">
+    <div class="loading-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+<script>
+    // Hide the loading screen when the window has fully loaded
+window.addEventListener('load', function() {
+    document.body.classList.add('loaded');
+});
+
+document.addEventListener("scroll", function() {
+    const contactSection = document.getElementById('contact');
+    const sectionPosition = contactSection.getBoundingClientRect().top;
+    const screenPosition = window.innerHeight / 1.2; // Trigger when section is 80% down the screen
+
+    if (sectionPosition < screenPosition) {
+        contactSection.classList.add('visible'); // Add the class to trigger animation
+    }
+});
+
+// Register ScrollTrigger with GSAP
+gsap.registerPlugin(ScrollTrigger);
+
+// Contact Section Animation
+gsap.from(".contact-content", {
+    scrollTrigger: {
+        trigger: ".contact-section",
+        start: "top 80%", // Start animation when top of section reaches 80% of viewport
+        end: "bottom 60%", // End animation before section exits
+        scrub: 1, // Smooth, gradual animation with scroll
+    },
+    opacity: 0,
+    x: -100, // Slide in from left
+    duration: 1
+});
+
+gsap.from(".contact-image img", {
+    scrollTrigger: {
+        trigger: ".contact-section",
+        start: "top 80%",
+        end: "bottom 60%",
+        scrub: 1, // Smooth effect
+    },
+    opacity: 0,
+    x: 100, // Slide in from right
+    duration: 1
+});
+gsap.to(".contact-section", {
+    scrollTrigger: {
+        trigger: ".contact-section",
+        start: "top 100%", 
+        scrub: true,
+    },
+    backgroundPosition: "50% 80%", // Shifts background position for parallax
+    ease: "none" // Linear, natural effect
+});
+
+function toggleMenu() {
+    const menu = document.querySelector('.navbar ul');
+    menu.classList.toggle('show');
+}
+
+</script>
+
+<div class="navbar">
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo">
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+
+    <ul>
+        <li><a href="#home-section">Home</a></li>
+        <li><a href="#why-choose-us">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        
+    </ul>
+</div>
+
+
+    <!-- Home Section -->
+    <section class="home-section" id="home-section">
+        <div class="content">
+            <h1>Welcome to Law Connect</h1>
+            <div class="line"></div> <!-- Horizontal line -->
+            <div class="law-rules">
+                <div class="law-rule">Effective.</div>
+                <div class="law-rule">Efficient.</div>
+                <div class="law-rule">Expeditious.</div>
+            </div>
+            <p>We are dedicated to upholding the highest standards of legal practice and ensuring that our clients receive comprehensive and effective representation.</p>
+            <br/>
+            <br/>
+            <a href="#services" class="cta-button">Services</a>
+            <a href="#contact" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+    <section class="why-choose-us" id="why-choose-us">
+        <div class="content-wrapper">
+            <div class="image-container">
+                <img src="4.jpg" alt="Law Office Image">
+            </div>
+            <div class="text-container">
+                <h2>Why Choose Us</h2>
+                <div class="line1"></div> <!-- Horizontal line -->
+                <h3>Your Trusted Legal Advisors</h3>
+                <p>Our dedicated team offers expertise, guidance, and support in every legal matter. We are committed to upholding the principles of justice and delivering results that meet our clients' needs.</p>
+                <ul>
+                    <li>Experienced and Specialized Lawyers</li>
+                    <li>Personalized Client-Centered Approach</li>
+                    <li>Transparent and Fair Billing Practices</li>
+                    <li>Proven Record of Successful Cases</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-us">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <div class="line1"></div> <!-- Line for styling -->
+            <p>We are a dedicated legal team committed to providing exceptional service and personalized attention to each client. Our expertise spans various fields of law, ensuring you have the best representation for your needs.</p>
+            <p>Our mission is to uphold justice and provide our clients with a clear understanding of their legal options, empowering them to make informed decisions.</p>
+            <a href="#contact" class="cta-button">Get in Touch</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="services-content">
+            <h2>Our Services</h2>
+            <div class="line2"></div> <!-- Underline for the heading -->
+            <p class="services-summary">
+                Our firm provides expert legal services tailored to address a wide range of client needs, with a commitment to quality and effective representation.
+            </p>
+            
+            <div class="services-grid" id="civil-litigation">
+                <div class="service-item">
+                    <img src="icons/civil-litigation.png" alt="Civil Litigation" class="service-icon">
+                    <h3>Civil Litigation</h3>
+                </div>
+                <div class="service-item">
+                    <img src="icons/labour-law.png" alt="Labour Law" class="service-icon">
+                    <h3>Labour Law</h3>
+                </div>
+                <div class="service-item">
+                    <img src="icons/family-law.png" alt="Family Law" class="service-icon">
+                    <h3>Family Law</h3>
+                </div>
+                <div class="service-item">
+                    <img src="icons/commercial-contracts.png" alt="Commercial Contracts" class="service-icon">
+                    <h3>Commercial Contracts</h3>
+                </div>
+                <div class="service-item">
+                    <img src="icons/medical.png" alt="Medical" class="service-icon">
+                    <h3>Medical</h3>
+                </div>
+                <div class="service-item">
+                    <img src="icons/road-accident-funds.png" alt="Road Accident Funds Claims" class="service-icon">
+                    <h3>Road Accident Funds Claims</h3>
+                </div>
+            </div>
+            <a href="#consultations-section" class="cta-button">Read More</a>
+        </div>
+    </section>
+
+    <section class="consultations-section" id="consultations-section">
+        <div class="consultation-content">
+            <h2>Consultations</h2>
+            <div class="line3"></div>
+            <p>
+                We offer personalized legal consultations to address your specific needs. Schedule your appointment today for expert guidance from our experienced attorneys.
+            </p>
+           
+        </div>
+        <div class="consultation-image">
+            <img src="8.jpg" alt="Consultation Image"> <!-- Replace with your image -->
+        </div>
+    </section>
+
+    <section class="legal-section">
+        <div class="legal-image">
+            <img src="10.jpg" alt="Consultation Image"> <!-- Replace with your image -->
+        </div>
+        <div class="legal-content">
+            <h2>Legal Resources</h2>
+            <div class="line3"></div> <!-- Horizontal line -->
+            <p>
+                Explore our extensive legal resources designed to assist you in understanding your rights and navigating the legal system. From guides on civil litigation and family law to information on commercial contracts and medical claims, we provide the tools you need for informed decision-making.
+            </p>
+            <p>
+                Our resources also include articles, FAQs, and access to relevant forms to help you effectively manage your legal needs. 
+            </p>
+        </div>
+    </section>
+
+    <section class="case-management-section">
+        <div class="case-content">
+            <h2>Case Management</h2>
+            <div class="line4"></div> <!-- Horizontal line -->
+            <p>
+                Our case management services ensure that each case is handled with precision, timeliness, and dedication, providing our clients with streamlined and effective legal solutions.
+            </p>
+           
+        </div>
+        <div class="case-image">
+            <img src="11.jpg" alt="Case Management Image"> <!-- Replace with your image -->
+        </div>
+    </section>
+    
+    
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h2>Contact Us</h2>
+            <div class="line5"></div> <!-- Horizontal line -->
+            <p>If you have any questions, feel free to reach out to us using the form below.</p>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <select required>
+                    <option value="" disabled selected>Select a Service</option>
+                    <option value="civil litigation">Civil Litigation</option>
+                    <option value="labour law">Labour Law</option>
+                    <option value="family law">Family Law</option>
+                    <option value="commercial contracts">Commercial Contracts</option>
+                    <option value="medical">Medical</option>
+                    <option value="road accident funds claims">Road Accident Funds Claims</option>
+                </select>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="logo-section1" id="logoSection1">
+    <div class="logo-container1">
+        <img src="logo.png" alt="Company Logo" class="center-logo1"> <!-- Replace with your logo file -->
+         
+    </div>
+</section>
+
+<section class="map-section">
+    <div class="map-container">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55431.82338704971!2d31.02352229485008!3d-29.734559020478905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef705936be7aad7%3A0x5695c879d17fa492!2suMhlanga!5e0!3m2!1sen!2sza!4v1730129382429!5m2!1sen!2sza&markers=color:red%7Clabel:C%7C-29.734559020478905,31.02352229485008" 
+            width="600" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+</section>
+
+<footer class="footer-section">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="logo.png" class="white-logo"> <!-- Replace with your white logo -->
+        </div>
+        
+        <div class="footer-links">
+            
+            <ul>
+                <li><a href="#home-section">Home</a></li>
+                <li><a href="#why-choose-us">About</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-about">
+            <h4>About</h4>
+            <p>Your trusted legal partner providing expert guidance and support.</p>
+            <br/>
+            <br/>
+            <h4>Contact Details</h4>
+            
+            <p><i class="fas fa-envelope"></i> info@yourdomain.com</p>
+            <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Legal St, City, Country</p>
+            
+        </div>
+        
+        
+        <div class="footer-social">
+           
+            <h4>Follow Us</h4>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+    <br/>
+    <div class="footer-bottom">
+        <p>Powered by BQTech</p>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+    
+    
+
+    
+    
+
+    
+    
+    
+</body>
+</html>
